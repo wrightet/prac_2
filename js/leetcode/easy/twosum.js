@@ -4,21 +4,17 @@
  * @return {number[]}
  */
 var twoSum = function(nums, target) {
+    let indeces = new Object();
     
-    let i = 0;
-    while (i < nums.length) {
-        let j = i+1;
-        while (j < nums.length) {
-            if(i === j){
-                continue;
-            }
-            else{
-                if (nums[i] + nums[j] === target){
-                    return [i,j];
-                }
-            }
-            j++;
+    for (let i = 0; i < nums.length; i++) {
+        const num = nums[i];
+        if (Object.keys(indeces).includes(target - num)){
+            indeces[target-num] = i;
         }
-        i++;
+        
+        
     }
+    return indeces;
 };
+
+console.log(twoSum([0,1,2,3,4,5], 1))
